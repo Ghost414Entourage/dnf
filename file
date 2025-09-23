@@ -116,3 +116,42 @@ echo $DBUS_SESSION_BUS_ADDRESS
 
 dnf install xpra
 
+
+
+
+
+
+
+yum groupinstall -y "Server with GUI"
+
+
+cat /tmp/xpra.log
+
+sudo yum install -y python3-websockify
+
+
+xpra stop :100
+
+
+git clone https://github.com/Xpra-org/xpra-html5
+cd xpra-html5
+sudo ./setup.py install
+
+
+sudo yum install -y python3-setuptools
+
+
+ls /usr/share/xpra/www || ls /usr/local/share/xpra/www
+
+
+xpra status :100
+
+
+xpra start :100 --start=gnome-session --bind-tcp=0.0.0.0:14500 --html=on --http=on --log-file=/tmp/xpra.log
+
+
+
+sudo mkdir -p /usr/local/share/xpra
+sudo ln -s /usr/share/xpra/www /usr/local/share/xpra/www
+
+
