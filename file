@@ -158,3 +158,97 @@ sudo ln -s /usr/share/xpra/www /usr/local/share/xpra/www
 
 xpra start :100 --start=gnome-session --bind-tcp=0.0.0.0:14500 --html=on --http=on --dpi=96 --log-file=/tmp/xpra.log
 
+
+
+
+
+
+sudo yum install -y pulseaudio pulseaudio-libs pulseaudio-utils
+
+
+systemctl --user status pipewire pipewire-pulse
+
+sudo yum install -y pipewire-utils
+
+
+sudo yum install -y gstreamer1-plugins-good gstreamer1-plugins-bad gstreamer1-plugins-ugly
+
+
+
+pkill pipewire
+pkill pipewire-pulse
+
+sudo yum install -y pipewire pipewire-libs pipewire-utils pipewire-pulseaudio
+
+
+export XDG_RUNTIME_DIR=/run/user/0
+sudo mkdir -p /run/user/0
+sudo chmod 700 /run/user/0
+
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+
+pactl info
+
+pw-play /usr/share/sounds/alsa/Front_Center.wav
+
+
+systemctl --user start pipewire pipewire-pulse
+systemctl --user enable pipewire pipewire-pulse
+systemctl --user status pipewire pipewire-pulse
+
+
+
+
+pkill pipewire
+pkill pipewire-pulse
+
+
+Xvfb :99 &
+export DISPLAY=:99
+
+dbus-run-session -- bash
+export XDG_RUNTIME_DIR=/run/user/0
+sudo mkdir -p /run/user/0
+sudo chmod 700 /run/user/0
+
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+
+
+pactl info
+
+sudo yum install -y pulseaudio-utils
+
+export DISPLAY=:99
+export XDG_RUNTIME_DIR=/run/user/0
+sudo mkdir -p /run/user/0
+sudo chmod 700 /run/user/0
+
+dbus-run-session -- bash
+
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+
+pactl info
+
+
+
+
+
+
+sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
+sudo yum install -y gstreamer1-plugins-bad gstreamer1-plugins-ugly
+
+
+sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm
+sudo yum install -y gstreamer1-plugins-bad-free gstreamer1-plugins-ugly
+
+
+
+sudo useradd -m xprauser
+sudo passwd xprauser
+su - xprauser
+systemctl --user start pipewire pipewire-pulse
+systemctl --user enable pipewire pipewire-pulse
+xpra start :100 --start=gnome-session --bind-tcp=0.0.0.0:14500 --html=on --http=on --speaker=on --pulseaudio=yes --log-file=/tmp/xpra.log
