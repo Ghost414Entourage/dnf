@@ -113,3 +113,6 @@ echo $DBUS_SESSION_BUS_ADDRESS
 
 
 
+
+dnf install xpra
+
