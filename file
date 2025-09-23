@@ -27,3 +27,89 @@ sudo reboot
 
 sudo dnf install openbox
 
+sudo dnf install i3
+
+echo "exec i3" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+
+
+sudo dnf install awesome
+
+echo "exec awesome" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+
+
+sudo dnf install bspwm sxhkd
+
+
+echo -e "sxhkd &\nexec bspwm" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+sudo dnf install fluxbox
+
+echo "exec fluxbox" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+sudo dnf install icewmc
+
+echo "exec icewm" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+
+sudo dnf install jwm
+
+echo "exec jwm" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+
+sudo dnf install cinnamon
+
+echo "exec cinnamon-session" > ~/.xinitrc
+export DISPLAY=:0
+startx
+
+
+
+sudo dnf install xorg-x11-server-Xephyr
+
+sudo dnf install xorg-x11-server-Xvfb
+
+
+sudo dnf install xorg-x11-server-Xnest
+
+
+
+
+sudo dnf install mesa-libGLU glx-utils
+
+
+
+sudo dnf install tigervnc-server
+vncserver :1
+
+sudo dnf install weston
+
+sudo dnf install xorg-x11-server-XWayland
+
+sudo dnf install weston-simple-egl
+
+dbus-launch --exit-with-session bash
+
+echo $DBUS_SESSION_BUS_ADDRESS
+
+
+
