@@ -155,3 +155,6 @@ sudo mkdir -p /usr/local/share/xpra
 sudo ln -s /usr/share/xpra/www /usr/local/share/xpra/www
 
 
+
+xpra start :100 --start=gnome-session --bind-tcp=0.0.0.0:14500 --html=on --http=on --dpi=96 --log-file=/tmp/xpra.log
+
