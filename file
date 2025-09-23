@@ -2,3 +2,28 @@ sudo dnf install epel-release
 
 
 sudo dnf install kernel-modules-extra
+
+
+
+sudo dnf install gdm
+
+
+
+
+sudo nano /etc/gdm/custom.conf
+
+[daemon]
+WaylandEnable=false
+
+
+
+sudo systemctl enable gdm
+sudo systemctl set-default graphical.target
+sudo systemctl start gdm
+sudo reboot
+
+
+
+
+sudo dnf install openbox
+
