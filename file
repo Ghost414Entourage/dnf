@@ -1,1 +1,4 @@
 sudo dnf install epel-release
+
+
+sudo dnf install kernel-modules-extra
